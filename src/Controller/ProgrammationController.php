@@ -11,8 +11,14 @@ class ProgrammationController extends AbstractController
     #[Route('/programmation', name: 'app_programmation')]
     public function index(): Response
     {
+        $mail = '';
+        if ($this->getUser()) {
+            $mail = $this->getUser()->getUserIdentifier();
+        }
+
         return $this->render('programmation/index.html.twig', [
             'controller_name' => 'ProgrammationController',
+            'mail' => $mail,
         ]);
     }
 }

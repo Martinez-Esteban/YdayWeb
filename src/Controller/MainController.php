@@ -12,8 +12,13 @@ class MainController extends AbstractController
     #[Route('/', name: 'app_main')]
     public function index(GroupesRepository $groupes): Response
     {
+        $mail = '';
+        if ($this->getUser()) {
+            $mail = $this->getUser()->getUserIdentifier();
+        }
         return $this->render('main/index.html.twig', [
-            'groupes' => $groupes->findBy([], ['id' => 'asc'])
+            'groupes' => $groupes->findBy([], ['id' => 'asc']),
+            'mail' => $mail,
         ]);
     }
 }

@@ -24,6 +24,11 @@
         <a href="/programmation" class="transition-all hover:text-slate-500">Programmation</a>
         <a href="/acces" class="transition-all hover:text-slate-500">Plan d'accès</a>
         <a href="/contact" class="transition-all hover:text-slate-500">Nous contacter</a>
+        {% if mail %}
+        <a href="/logout" class="transition-all hover:text-slate-500">Déconnexion</a>
+        {% else %}
+        <a href="/login" class="transition-all hover:text-slate-500">Connexion</a>
+        {% endif %}
     </div>
     {% block body %}
     {% endblock %}
